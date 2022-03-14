@@ -29,7 +29,7 @@ public class SearchController {
     @RequestMapping(value="/results",method={RequestMethod.GET,RequestMethod.POST})
     public String displaySearchResults(Model model, @RequestParam("searchType") String searchType, @RequestParam("searchTerm") String searchTerm){
         ArrayList<Job> jobs;
-        if(searchTerm.equals("all") || searchTerm.equals("") || searchType.equals("all")){
+        if(searchTerm.equals("all") && searchTerm.equals("")){
             jobs = JobData.findAll();
         } else {
             jobs = JobData.findByColumnAndValue(searchType,searchTerm);
